@@ -147,7 +147,15 @@ function class(obj)
     cls = setmetatable(cls, {
         __call = function(_, ...)
             local o = {}
-            setmetatable(o, { __index = cls })
+            local mt = {}
+            for k, v in pairs(cls) do
+                if k:sub(0, 2) == "__" then
+                    mt[k] = v
+                else
+                    o[k] = v
+                end
+            end
+            o = setmetatable(o, mt)
             if cls.init then
                 cls.init(o, ...)
             end

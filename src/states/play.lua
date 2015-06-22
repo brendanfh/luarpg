@@ -3,20 +3,29 @@ import {
     Screen = "src.gfx.screen:";
     G = "src.constants";
 
-    World = "src.world.world:"
+    World = "src.world.world:";
+    Player = "src.world.sprites.player:";
+    Game = "src.game:";
 }
 
 PlayState = BaseState.extend {
-    init = function(self)
+    init = function(self, parent)
+        BaseState.init(self, parent)
         self.world = World()
+        self.player = Player()
+
+        self.world.sprites:add(self.player)
+    end;
+
+    update = function(self, dt)
+        self.world:update(dt)
+        if love.keyboard.isDown "t" then
+            Game:setState(self.parent)
+        end
     end;
 
     draw = function(self)
-        love.graphics.setColor(255, 0, 0)
-        love.graphics.rectangle("fill", 0, 0, G.width, G.height)
-
-        love.graphics.setColor(0, 0, 0)
-        love.graphics.rectangle("fill", 5, 5, G.width - 10, G.height - 10)
+        self.world:draw()
     end;
 }
 

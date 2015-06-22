@@ -1,7 +1,9 @@
 import { }
 
 BaseState = class {
-    init = function(self) end;
+    init = function(self, parent)
+        self.parent = parent
+    end;
     update = function(self, dt) end;
     draw = function(self) end;
 }

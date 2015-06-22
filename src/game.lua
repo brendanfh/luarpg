@@ -15,7 +15,7 @@ Game = singleton {
 
     setState = function(self, state, ...)
         if type(state) == "string" then
-            self.state = self.states[state](...)
+            self.state = self.states[state](self.state, ...)
         else
             self.state = state
         end

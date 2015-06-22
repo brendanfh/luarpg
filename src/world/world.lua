@@ -4,7 +4,15 @@ import {
 
 World = class {
     init = function(self)
-        self.sprites = SpriteManager();
+        self.sprites = SpriteManager()
+    end;
+
+    update = function(self, dt)
+        self.sprites:update(dt)
+    end;
+
+    draw = function(self)
+        self.sprites:draw()
     end;
 }
 
