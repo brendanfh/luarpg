@@ -117,7 +117,7 @@ function factory(f)
 end
 
 --[[
-    Classes - factories with a initializer and are allowed to hold variables
+    Classes - factories with a initializer and a self-reference, and are allowed to hold variables
 
     Initialize with "init"
     Create new instance by calling name of class
